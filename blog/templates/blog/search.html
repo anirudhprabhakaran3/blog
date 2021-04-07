@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %} Search {% endblock %}
+
+{% block body %}
+
+
+<div class="flex mt-6 mb-32">
+  <div class="w-1/3"></div>
+
+  <div class="w-4/6">
+
+    <center>
+      <form method="get" class="py-12 mx-auto px-auto">
+        <input type="text" name="q" placeholder="Search for posts" value="{{ request.GET.q }}" class="py-2 px-1 sm:py-4 sm:px-4 text-xl outline-none border-custom-blue border-2 rounded-full">
+        <input type="submit" value="Search" class="px-8 py-4 text-2xl rounded-full bg-custom-blue text-white font-bold cursor-pointer outline-none">
+      </form>
+    </center>
+
+    {% if request.GET.q %}
+      {% for x in posts %}
+        <a href="{% url 'post_detail' pk=x.pk %}">
+          <div class="bg-gray-200 text-black hover:text-custom-blue px-8 py-8 mb-10 hover:shadow-lg rounded-lg">
+            <h1 class="font-black heading-text text-4xl border-dotted border-custom-blue border-b-4">{{x.title}}</h1>
+            <p class="mt-2 font-semibold text-xl text text-gray-700">
+              By {{x.author}}, Batch of {{x.batch}}, on {{x.published_date.date}}
+            </p>
+          </div>
+        </a>
+      {% endfor %}
+    {% endif %}
+
+
+  </div>
+
+  <div class="w-1/3"></div>
+</div>
+
+
+{% endblock %}

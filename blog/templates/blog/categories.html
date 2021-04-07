@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block title %} Categories {% endblock %}
+
+{% block body %}
+
+<style media="screen">
+  .svg{
+    opacity:1;
+    height : 23rem;
+    width : 23rem;
+  }
+</style>
+
+<div class="w-full flex justify-around items-center py-12">
+  <div>
+    <h1 class="text-5xl sm:text-6xl heading-text font-black overflow-hidden">Categories</h1>
+  </div>
+</div>
+
+<a href="/cat/na">
+  <div class="block sm:flex items-center bg-gray-200 py-2">
+    <div class="block sm:inline-block text-center text-4xl text font-semibold w-full sm:w-1/2">
+      Nature
+    </div>
+    <div class="block sm:flex items-center text-center justify-around w-full sm:w-1/2 px-3">
+      <img src="https://cdn.jsdelivr.net/gh/ani-coder-hacker/chinai-resources/Nature.svg" alt="Nature" class="svg">
+    </div>
+</div>
+</a>
+
+<a href="/cat/dr">
+  <div class="block sm:hidden items-center bg-gray-300 py-2">
+    <div class="block sm:inline-block text-center text-4xl text font-semibold w-full sm:w-1/2">
+      Descriptions
+    </div>
+    <div class="block sm:flex items-center text-center justify-around w-full sm:w-1/2 px-3">
+      <img src="https://cdn.jsdelivr.net/gh/ani-coder-hacker/chinai-resources/Descriptions.svg" alt="Descriptions" class="svg">
+    </div>
+</div>
+</a>
+
+<a href="/cat/dr">
+  <div class="hidden sm:flex items-center bg-gray-300 py-2">
+    <div class="block sm:flex items-center text-center justify-around w-full sm:w-1/2 px-3">
+      <img src="https://cdn.jsdelivr.net/gh/ani-coder-hacker/chinai-resources/Descriptions.svg" alt="Descriptions" class="svg">
+    </div>
+    <div class="block sm:inline-block text-center text-4xl text font-semibold w-full sm:w-1/2">
+      Descriptions
+    </div>
+</div>
+</a>
+
+<a href="/cat/th">
+  <div class="block sm:flex items-center bg-gray-400 py-2">
+    <div class="block sm:inline-block text-center text-4xl text font-semibold w-full sm:w-1/2">
+      Threshold
+    </div>
+    <div class="block sm:flex items-center text-center justify-around w-full sm:w-1/2 px-3">
+      <img src="https://cdn.jsdelivr.net/gh/ani-coder-hacker/chinai-resources/Threshold.svg" alt="Threshold" class="svg">
+    </div>
+</div>
+</a>
+
+
+<a href="/cat/pe">
+  <div class="block sm:hidden items-center bg-gray-300 py-2">
+    <div class="block sm:inline-block text-center text-4xl text font-semibold w-full sm:w-1/2">
+      Experiences
+    </div>
+    <div class="block sm:flex items-center text-center justify-around w-full sm:w-1/2 px-3">
+      <img src="https://cdn.jsdelivr.net/gh/ani-coder-hacker/chinai-resources/Experiences.svg" alt="Experiences" class="svg">
+    </div>
+</div>
+</a>
+
+<a href="/cat/pe">
+  <div class="hidden sm:flex items-center bg-gray-300 py-2">
+    <div class="block sm:flex items-center text-center justify-around w-full sm:w-1/2 px-3">
+      <img src="https://cdn.jsdelivr.net/gh/ani-coder-hacker/chinai-resources/Experiences.svg" alt="Experiences" class="svg">
+    </div>
+    <div class="block sm:inline-block text-center text-4xl text font-semibold w-full sm:w-1/2">
+      Experiences
+    </div>
+</div>
+</a>
+
+<a href="/cat/sc">
+  <div class="block sm:flex items-center bg-gray-200 py-2">
+    <div class="block sm:inline-block text-center text-4xl text font-semibold w-full sm:w-1/2">
+      School
+    </div>
+    <div class="block sm:flex items-center text-center justify-around w-full sm:w-1/2 px-3">
+      <img src="https://cdn.jsdelivr.net/gh/ani-coder-hacker/chinai-resources/School.svg" alt="School" class="svg">
+    </div>
+</div>
+</a>
+
+{% endblock %}

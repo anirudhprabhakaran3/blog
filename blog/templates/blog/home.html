@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %} Home {% endblock %}
+
+{% block body %}
+
+{% if firstpost %}
+  <style>
+      .main-image{
+          background-image: url("{{firstpost.image}}");
+      }
+  </style>
+
+  <a href="{% url 'post_detail' pk=firstpost.pk %}">
+    <div class="w-full main-image flex justify-around items-center text-center">
+        <div>
+            <p class="text-white font-black text-6xl heading-text mb-0">
+                {{firstpost.title}}
+            </p>
+            <br>
+            <p class="text font-black text-xl text-gray-100 mt-0">By {{firstpost.author}}</p>
+        </div>
+    </div>
+  </a>
+{% endif %}
+
+{% if posts %}
+  <div class="w-full sm:flex">
+
+  {% for x in posts %}
+
+      <div class="block w-full sm:w-1/3 text-center">
+          <a href="{% url 'post_detail' pk=x.pk %}">
+              <div class="h-64">
+                  <img src="{{x.image}}" class="w-full h-64 object-cover">
+              </div>
+              <div class="h-64 text-black bg-gray-100 heading-text font-semibold text-3xl flex justify-around items-center animated mb-0">
+                  <h1>
+                    {{x.title}}
+                    <br>
+                    <p class="text font-black text-xl text-gray-700 mt-0">By {{x.author}}, Batch of {{x.batch}}</p>
+                  </h1>
+              </div>
+
+          </a>
+      </div>
+  {% endfor %}
+  </div>
+{% endif %}
+<div class="w-full px-8 py-10 text-2xl sm:text-3xl font-semibold text ">
+    <h1> <a href="/posts" class="border-b-4 border-dotted border-black hover:text-blue-600 hover:border-blue-600">Read more, </a> or <a href="/cat" class="border-b-4 border-dotted border-black hover:text-blue-600 hover:border-blue-600">explore categories.</a></h1>
+</div>
+{% endblock %}

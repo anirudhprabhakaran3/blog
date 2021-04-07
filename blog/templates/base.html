@@ -1,0 +1,147 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %} | Anirudh Prabhakaran</title>
+    <script src="https://kit.fontawesome.com/611b4f1255.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/anirudhprabhakaran3/chinai-resources/fonts_1.2.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/anirudhprabhakaran3/chinai-resources/build_1.1.min.css">
+
+    <style>
+      p {
+        margin-bottom: 5%;
+      }
+    </style>
+</head>
+
+<body class="text">
+
+{% for message in messages %}
+  {% if message.type == 'IF' %}
+    <div class="px-4 py-2 bg-blue-500 text-gray-100 pb-2">
+      <div class="flex items-center justify-between">
+        <div class="heading-text text-2xl sm:text-4xl uppercase font-black">{{message.subject}}</div>
+        <div class="text-4xl cursor-pointer"  onclick="this.parentNode.parentNode.style.display='none'"><i class="fas fa-times-circle"></i></div>
+      </div>
+      <p class="mt-1 text-lg sm:text-xl text">{{message.content}}</p>
+    </div>
+  {% endif %}
+  {% if message.type == 'AL' %}
+    <div class="px-4 py-2 bg-red-500 text-gray-100 pb-2">
+      <div class="flex items-center justify-between">
+        <div class="heading-text text-2xl sm:text-4xl uppercase font-black">{{message.subject}}</div>
+        <div class="text-4xl cursor-pointer"  onclick="this.parentNode.parentNode.style.display='none'"><i class="fas fa-times-circle"></i></div>
+      </div>
+      <p class="mt-1 text-lg sm:text-xl text">{{message.content}}</p>
+    </div>
+  {% endif %}
+{% endfor %}
+
+</div>
+
+{% if user.is_superuser %}
+<header class="px-4 py-4 bg-gray-200 text-gray-800 sm:flex sm:justify-between">
+    <div class="flex items-center justify-between">
+        <div>
+            <h1 class="font-black heading-text text-2xl sm:text-4xl uppercase"><a href="/">Anirudh Prabhakaran</a></h1>
+        </div>
+
+        <div class="sm:hidden">
+            <button type="button" class="block focus:outline-none">
+                <div onclick="myFunction(this)">
+                    <i class="fas fa-bars text-3xl"></i>
+                </div>
+            </button>
+        </div>
+    </div>
+
+    <div class="py-1 text-gray-800 hidden sm:flex" id="drawer">
+        <a href="/about" class="outline-none block px-2 py-1 font-semibold text-2xl text rounded-lg hover:bg-gray-900 hover:text-white sm:normal-case">About</a>
+        <a href="/posts" class="outline-none block px-2 py-1 mt-1 sm:mt-0 sm:ml-2 font-semibold text-2xl text rounded-lg hover:bg-gray-900 hover:text-white sm:normal-case">Posts</a>
+        <a href="/admin" class="outline-none block px-2 py-1 mt-1 sm:mt-0 sm:ml-2 font-semibold text-2xl text rounded-lg hover:bg-gray-900 hover:text-white sm:normal-case">Admin</a>
+        <a href="/admin/logout" class="outline-none block px-2 py-1 mt-1 sm:mt-0 sm:ml-2 font-semibold text-2xl text rounded-lg hover:bg-gray-900 hover:text-white sm:normal-case">Logout</a>
+        <a href="/search" class="outline-none block px-2 py-1 mt-1 sm:mt-0 sm:ml-2 font-semibold text-2xl text rounded-lg hover:bg-gray-900 hover:text-white sm:normal-case"><i class="fas fa-search"></i></a>
+    </div>
+</header>
+{% else %}
+<header class="px-4 py-4 bg-gray-200 text-gray-800 sm:flex sm:justify-between">
+    <div class="flex items-center justify-between">
+        <div>
+            <h1 class="font-black heading-text text-2xl sm:text-4xl uppercase"><a href="/">Anirudh Prabhakaran</a></h1>
+        </div>
+
+        <div class="sm:hidden">
+            <button type="button" class="block focus:outline-none">
+                <div onclick="myFunction(this)">
+                    <i class="fas fa-bars text-3xl"></i>
+                </div>
+            </button>
+        </div>
+    </div>
+
+    <div class="py-1 text-gray-800 hidden sm:flex" id="drawer">
+        <a href="/about" class="outline-none block px-2 py-1 font-semibold text-2xl text rounded-lg hover:bg-gray-900 hover:text-white sm:normal-case">About</a>
+        <a href="/posts" class="outline-none block px-2 py-1 mt-1 sm:mt-0 sm:ml-2 font-semibold text-2xl text rounded-lg hover:bg-gray-900 hover:text-white sm:normal-case">Posts</a>
+        <a href="/admin" class="outline-none block px-2 py-1 mt-1 sm:mt-0 sm:ml-2 font-semibold text-2xl text rounded-lg hover:bg-gray-900 hover:text-white sm:normal-case">Login</a>
+        <a href="/search" class="outline-none block px-2 py-1 mt-1 sm:mt-0 sm:ml-2 font-semibold text-2xl text rounded-lg hover:bg-gray-900 hover:text-white sm:normal-case"><i class="fas fa-search"></i></a>
+    </div>
+</header>
+{% endif %}
+
+      {% block body %}
+
+      {% endblock %}
+
+      <div class="w-full sm:flex bg-custom-blue text-white font-semibold text-4xl text">
+          <div class="block sm:w-1/2 px-8 py-8 text-2xl ml-8 leading-relaxed">
+            <p class="block text-xl w-full text-left mt-8">
+                Connect with me: <br>
+              <ul style="list-style: none;" class="text-left">
+                  <li><a href="mailto:anirudhprabhakaran3@gmail.com" class="hover:text-custom-green text-xl" style="display: inline;"><i class="far fa-envelope mr-2"></i>Mail</a></li>
+                  <li><a href="https://github.com/anirudhprabhakaran3" class="hover:text-custom-green text-xl" style="display: inline;"><i class="fab fa-github mr-2"></i>GitHub</a></li>
+                  <li><a href="https://linkedin.com/in/anirudhprabhakaran" class="hover:text-custom-green text-xl" style="display: inline;"><i class="fab fa-linkedin mr-2"></i>LinkedIn</a></li>
+                  <li><a href="https://instagram.com/anirudhprabhakaran" class="hover:text-custom-green text-xl" style="display: inline;"><i class="fab fa-instagram mr-2"></i>Instagram</a></li>
+              </ul>
+            </p>
+          </div>
+          <div class="block sm:w-1/2 px-8 py-8 text-center">
+              <h1 class="block w-full heading-text font-semibold">
+                  Anirudh Prabhakaran
+              </h1>
+              <ul class="text-left">
+                <li><a href="/about" class="hover:text-custom-green text-2xl sm:text-3xl"><i class="fas fa-long-arrow-alt-right mr-4"></i>About</a></li>
+                <li><a href="/posts" class="hover:text-custom-green text-2xl sm:text-3xl"><i class="fas fa-long-arrow-alt-right mr-4"></i>Posts</a></li>
+                <li><a href="/cat" class="hover:text-custom-green text-2xl sm:text-3xl"><i class="fas fa-long-arrow-alt-right mr-4"></i>Categories</a></li>
+            </ul>
+          </div>
+      </div>
+
+
+      <footer class="w-full bg-custom-blue text-blue-200 px-8 py-6 text-xl font-semibold text leading-relaxed border-t-8 border-custom-green border-solid ">
+        <p>
+            
+            Copyright &#9400; Anirudh Prabhakaran. All Rights Reserved. All photographs from <a href="https://unsplash.com/" class="border-b-4 border-dotted border-blue-200 text-blue-200 hover:cursor-pointer hover:border-custom-green hover:text-custom-green">Unsplash</a>, and <a href="https://picsum.photos" class="border-b-4 border-dotted border-blue-200 text-blue-200 hover:cursor-pointer hover:border-custom-green hover:text-custom-green">Lorem Picsum</a>.
+             
+        </p>
+      </footer>
+
+
+
+      <script>
+          function myFunction(x) {
+            x.classList.toggle("change");
+            let drawer = document.getElementById("drawer");
+            if(drawer.classList.contains("hidden")){
+                drawer.classList.remove("hidden");
+                drawer.classList.add("block")
+            } else {
+                drawer.classList.remove("block");
+                drawer.classList.add("hidden");
+            }
+          }
+          </script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %} {{post.title}} by {{post.author}} {% endblock %}
+
+{% block body %}
+
+<style>
+    .image{
+        background-image: url("{{post.image}}");
+        height: 25rem;
+        background-size: cover;
+        background-position: center;
+    }
+</style>
+
+<div class="w-full image">
+
+</div>
+
+<div class="mt-4 mb-6 py-6 flex">
+  <div class="w-1/6"></div>
+
+  <div class="w-4/6 sm:text-justify">
+    <h1 class="heading-text font-black text-5xl sm:text-6xl">{{post.title}}</h1>
+    <h2 class="heading-text font-black text-gray-600 text-xl">By {{post.author}}, Batch of {{post.batch}}</h2>
+    <h2 class="heading-text font-black text-gray-600 text-xl">Published on {{post.published_date.date}}</h2>
+
+    <p class="text text-xl text-gray-800 mt-6">
+      {{post.content|safe}}
+    </p>
+  </div>
+
+  <div class="w-1/6"></div>
+
+</div>
+
+{% endblock %}
