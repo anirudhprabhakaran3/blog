@@ -11,7 +11,7 @@
 
     <style>
       p {
-        margin-bottom: 5%;
+        margin-bottom: 0%;
       }
     </style>
 </head>
@@ -58,11 +58,12 @@
     </div>
 
     <div class="py-1 text-gray-800 hidden sm:flex" id="drawer">
-        <a href="/about" class="outline-none block px-2 py-1 font-semibold text-2xl text rounded-lg hover:bg-gray-900 hover:text-white sm:normal-case">About</a>
-        <a href="/posts" class="outline-none block px-2 py-1 mt-1 sm:mt-0 sm:ml-2 font-semibold text-2xl text rounded-lg hover:bg-gray-900 hover:text-white sm:normal-case">Posts</a>
-        <a href="/admin" class="outline-none block px-2 py-1 mt-1 sm:mt-0 sm:ml-2 font-semibold text-2xl text rounded-lg hover:bg-gray-900 hover:text-white sm:normal-case">Admin</a>
+        <a href="{% url 'about' %}" class="outline-none block px-2 py-1 font-semibold text-2xl text rounded-lg hover:bg-gray-900 hover:text-white sm:normal-case">About</a>
+        <a href="{% url 'post_list' %}" class="outline-none block px-2 py-1 mt-1 sm:mt-0 sm:ml-2 font-semibold text-2xl text rounded-lg hover:bg-gray-900 hover:text-white sm:normal-case">Posts</a>
+        <a href="{% url 'admin_interface' %}" class="outline-none block px-2 py-1 mt-1 sm:mt-0 sm:ml-2 font-semibold text-2xl text rounded-lg hover:bg-gray-900 hover:text-white sm:normal-case">Admin</a>
         <a href="/admin/logout" class="outline-none block px-2 py-1 mt-1 sm:mt-0 sm:ml-2 font-semibold text-2xl text rounded-lg hover:bg-gray-900 hover:text-white sm:normal-case">Logout</a>
-        <a href="/search" class="outline-none block px-2 py-1 mt-1 sm:mt-0 sm:ml-2 font-semibold text-2xl text rounded-lg hover:bg-gray-900 hover:text-white sm:normal-case"><i class="fas fa-search"></i></a>
+        <a href="{% url 'search' %}" class="outline-none block px-2 py-1 mt-1 sm:mt-0 sm:ml-2 font-semibold text-2xl text rounded-lg hover:bg-gray-900 hover:text-white sm:normal-case"><i class="fas fa-search"></i></a>
+        <a href="{% url 'post_new' %}" class="outline-none block px-2 py-1 mt-1 sm:mt-0 sm:ml-2 font-semibold text-2xl text rounded-lg hover:bg-gray-900 hover:text-white sm:normal-case"><i class="fas fa-plus-square"></i></a>
     </div>
 </header>
 {% else %}
@@ -82,10 +83,10 @@
     </div>
 
     <div class="py-1 text-gray-800 hidden sm:flex" id="drawer">
-        <a href="/about" class="outline-none block px-2 py-1 font-semibold text-2xl text rounded-lg hover:bg-gray-900 hover:text-white sm:normal-case">About</a>
-        <a href="/posts" class="outline-none block px-2 py-1 mt-1 sm:mt-0 sm:ml-2 font-semibold text-2xl text rounded-lg hover:bg-gray-900 hover:text-white sm:normal-case">Posts</a>
-        <a href="/admin" class="outline-none block px-2 py-1 mt-1 sm:mt-0 sm:ml-2 font-semibold text-2xl text rounded-lg hover:bg-gray-900 hover:text-white sm:normal-case">Login</a>
-        <a href="/search" class="outline-none block px-2 py-1 mt-1 sm:mt-0 sm:ml-2 font-semibold text-2xl text rounded-lg hover:bg-gray-900 hover:text-white sm:normal-case"><i class="fas fa-search"></i></a>
+        <a href="{% url 'about' %}" class="outline-none block px-2 py-1 font-semibold text-2xl text rounded-lg hover:bg-gray-900 hover:text-white sm:normal-case">About</a>
+        <a href="{% url 'post_list' %}" class="outline-none block px-2 py-1 mt-1 sm:mt-0 sm:ml-2 font-semibold text-2xl text rounded-lg hover:bg-gray-900 hover:text-white sm:normal-case">Posts</a>
+        <a href="{% url 'admin_interface' %}" class="outline-none block px-2 py-1 mt-1 sm:mt-0 sm:ml-2 font-semibold text-2xl text rounded-lg hover:bg-gray-900 hover:text-white sm:normal-case">Login</a>
+        <a href="{% url 'search' %}" class="outline-none block px-2 py-1 mt-1 sm:mt-0 sm:ml-2 font-semibold text-2xl text rounded-lg hover:bg-gray-900 hover:text-white sm:normal-case"><i class="fas fa-search"></i></a>
     </div>
 </header>
 {% endif %}
@@ -111,9 +112,9 @@
                   Anirudh Prabhakaran
               </h1>
               <ul class="text-left">
-                <li><a href="/about" class="hover:text-custom-green text-2xl sm:text-3xl"><i class="fas fa-long-arrow-alt-right mr-4"></i>About</a></li>
-                <li><a href="/posts" class="hover:text-custom-green text-2xl sm:text-3xl"><i class="fas fa-long-arrow-alt-right mr-4"></i>Posts</a></li>
-                <li><a href="/cat" class="hover:text-custom-green text-2xl sm:text-3xl"><i class="fas fa-long-arrow-alt-right mr-4"></i>Categories</a></li>
+                <li><a href="{% url 'about' %}" class="hover:text-custom-green text-2xl sm:text-3xl"><i class="fas fa-long-arrow-alt-right mr-4"></i>About</a></li>
+                <li><a href="{% url 'post_list' %}" class="hover:text-custom-green text-2xl sm:text-3xl"><i class="fas fa-long-arrow-alt-right mr-4"></i>Posts</a></li>
+                <li><a href="{% url 'categories' %}" class="hover:text-custom-green text-2xl sm:text-3xl"><i class="fas fa-long-arrow-alt-right mr-4"></i>Categories</a></li>
             </ul>
           </div>
       </div>
