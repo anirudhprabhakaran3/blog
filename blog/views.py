@@ -107,10 +107,6 @@ def categories(request):
     return render(request, 'blog/categories.html', args)
 
 @staff_member_required
-def admin_interface(request):
-    return render(request, 'blog/admin_interface.html')
-
-@staff_member_required
 def post_new(request):
     if request.method == "POST":
         form = PostForm(request.POST)
