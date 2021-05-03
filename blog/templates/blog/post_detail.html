@@ -22,7 +22,8 @@
 
   <div class="w-4/6 sm:text-justify">
     <h1 class="heading-text font-black text-5xl sm:text-6xl">{{post.title}}</h1>
-    <h2 class="heading-text font-black text-gray-600 text-xl">By {{post.author}}</h2>
+    <a href="{% url 'categories_detail' pk=post.category.pk %}" class="text bg-black bg-opacity-75 text-base text-gray-100 mt-0 p-2 rounded-lg">{{ post.category }}</a>
+    <h2 class="heading-text font-black text-gray-600 text-xl mt-4">By {{post.author}}</h2>
     <h2 class="heading-text font-black text-gray-600 text-xl">Published on {{post.published_date}}</h2>
 
     {% if user.is_authenticated %}

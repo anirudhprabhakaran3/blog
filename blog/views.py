@@ -2,6 +2,7 @@ from django.shortcuts import render,get_object_or_404, redirect
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.contrib.admin.views.decorators import staff_member_required
 from django.utils import timezone
+from django.db.models import Q
 
 from .models import Post, Message, Category
 from .forms import PostForm, MessageForm
@@ -33,8 +34,7 @@ def search(request):
         posts = posts.filter(
             Q(title__icontains=query) |
             Q(author__icontains=query) |
-            Q(content__icontains=query) |
-            Q(batch__icontains=query)
+            Q(content__icontains=query)
             ).distinct()
     message = Message.objects.all().order_by('-id')
     args = {

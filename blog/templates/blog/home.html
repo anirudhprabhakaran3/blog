@@ -17,8 +17,8 @@
             <p class="text-white font-black text-6xl heading-text mb-0">
                 {{firstpost.title}}
             </p>
-            <br>
-            <p class="text font-black text-xl text-gray-100 mt-0">By {{firstpost.author}}</p>
+            <p class="text font-black text-xl text-gray-100 mt-0">By {{firstpost.author}}</p><br>
+            <span class="text bg-black bg-opacity-75 text-xl text-gray-100 mt-0 p-2 rounded-lg">{{ firstpost.category }}</span>
         </div>
     </div>
   </a>
@@ -37,8 +37,8 @@
               <div class="h-64 text-black bg-gray-100 heading-text font-semibold text-3xl flex justify-around items-center animated mb-0">
                   <h1>
                     {{x.title}}
-                    <br>
                     <p class="text font-black text-xl text-gray-700 mt-0">By {{x.author}}</p>
+                    <span class="text bg-black bg-opacity-75 text-xl text-gray-100 mt-0 p-2 rounded-lg">{{ x.category }}</span>
                   </h1>
               </div>
 
