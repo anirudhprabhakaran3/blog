@@ -30,7 +30,7 @@
     <a href="{% url 'post_edit' pk=post.pk%}" class="heading-text font-black text-5xl sm:text-6xl"><i class="fas fa-edit"></i></a>
     {% endif %}
 
-    <p class="text-gray-800 mt-6 text-2xl">
+    <p class="text-gray-800 mt-6 text-2xl normal-text">
       {{post.content|safe}}
     </p>
   </div>

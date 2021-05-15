@@ -8,6 +8,7 @@ from tinymce.models import HTMLField
 class Category(models.Model):
 
     name = models.CharField(max_length=200)
+    image = models.CharField(max_length=300, default="https://picsum.photos/700?random=10")
 
     class Meta:
         verbose_name = "Category"
@@ -18,7 +19,7 @@ class Category(models.Model):
 
 class Post(models.Model):
 
-    author = models.CharField(max_length=200, default="Anirudh Prabhakaran")
+    author = models.CharField(max_length=200)
     title = models.CharField(max_length=200)
     image = models.CharField(max_length=300, default="https://picsum.photos/700?random=10")
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
