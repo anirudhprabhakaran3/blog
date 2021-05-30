@@ -19,7 +19,7 @@ class Category(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('categories_detail', kwargs={'id': self.id})
+        return reverse('categories_detail', kwargs={'pk': self.pk})
 
 class Post(models.Model):
 
@@ -35,7 +35,7 @@ class Post(models.Model):
         ordering = ['-id']
 
     def get_absolute_url(self):
-        return reverse('post_detail', kwargs={'id' : self.id})
+        return reverse('post_detail', kwargs={'pk' : self.pk})
 
     def publish(self):
         self.published_date = timezone.now()
