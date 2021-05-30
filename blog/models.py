@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.urls import reverse
 
 from tinymce.models import HTMLField
 
@@ -17,6 +18,9 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return reverse('categories_detail', kwargs={'id': self.id})
+
 class Post(models.Model):
 
     author = models.CharField(max_length=200)
@@ -26,6 +30,12 @@ class Post(models.Model):
     content = HTMLField()
     created_date = models.DateField(default=timezone.now)
     published_date = models.DateField()
+
+    class Meta:
+        ordering = ['-id']
+
+    def get_absolute_url(self):
+        return reverse('post_detail', kwargs={'id' : self.id})
 
     def publish(self):
         self.published_date = timezone.now()
