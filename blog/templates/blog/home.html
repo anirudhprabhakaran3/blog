@@ -11,7 +11,7 @@
       }
   </style>
 
-  <a href="{% url 'post_detail' pk=firstpost.pk %}">
+  <a href="{% url 'test_slug' slug=firstpost.slug %}">
     <div class="w-full main-image flex justify-around items-center text-center">
         <div>
             <p class="text-white font-black text-6xl heading-text mb-0">
@@ -30,7 +30,7 @@
   {% for x in posts %}
 
       <div class="block w-full sm:w-1/3 text-center">
-          <a href="{% url 'post_detail' pk=x.pk %}">
+          <a href="{% url 'test_slug' slug=x.slug %}">
               <div class="h-64">
                   <img src="{{x.image}}" class="w-full h-64 object-cover">
               </div>

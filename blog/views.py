@@ -9,7 +9,7 @@ from .forms import PostForm, MessageForm
 
 # Create your views here.
 def post_list(request):
-    posts_list = Post.objects.all().order_by('-published_date')
+    posts_list = Post.objects.all().order_by('-id')
     paginator = Paginator(posts_list, 4)
     page = request.GET.get('page')
     try:
@@ -28,7 +28,7 @@ def post_list(request):
     return render(request, 'blog/post_list.html', args)
 
 def search(request):
-    posts = Post.objects.all().order_by('-published_date')
+    posts = Post.objects.all().order_by('-id')
     query = request.GET.get("q")
     if query:
         posts = posts.filter(
@@ -47,8 +47,8 @@ def home(request):
     message = Message.objects.all().order_by('-id')
     x = Post.objects.all()
     if x:
-        firstpost = Post.objects.all().order_by('-published_date')[0]
-        posts = Post.objects.all().order_by('-published_date')[1:4]
+        firstpost = Post.objects.all().order_by('-id')[0]
+        posts = Post.objects.all().order_by('-id')[1:4]
     else:
         posts = []
         firstpost = []
@@ -112,10 +112,9 @@ def post_new(request):
         form = PostForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
-            post.author = request.user
             post.published_date = timezone.now()
             post.save()
-            return redirect('post_detail', pk=post.pk)
+            return redirect('test_slug', slug=post.slug)
     else:
         form = PostForm()
 
@@ -144,3 +143,13 @@ def post_edit(request, pk):
         'messages': message,
     }
     return render(request, 'blog/post_edit.html', args)
+
+def test_slug(request, slug):
+    post = get_object_or_404(Post, slug=slug)
+    message = Message.objects.all().order_by('-id')
+    args = {
+        'post': post,
+        'message': message,
+    }
+    
+    return render(request, 'blog/post_detail.html', args)

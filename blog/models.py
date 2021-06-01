@@ -27,15 +27,16 @@ class Post(models.Model):
     title = models.CharField(max_length=200)
     image = models.CharField(max_length=300, default="https://picsum.photos/700?random=10")
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    slug = models.CharField(max_length=200, blank=True, null=True)
     content = HTMLField()
     created_date = models.DateField(default=timezone.now)
-    published_date = models.DateField()
+    published_date = models.DateField(blank=True, null=True)
 
     class Meta:
         ordering = ['-id']
 
     def get_absolute_url(self):
-        return reverse('post_detail', kwargs={'pk' : self.pk})
+        return reverse('test_slug', kwargs={'slug' : self.slug})
 
     def publish(self):
         self.published_date = timezone.now()
