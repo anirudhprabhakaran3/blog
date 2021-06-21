@@ -7,7 +7,7 @@ from tinymce.models import HTMLField
 # Create your models here.
 
 class Category(models.Model):
-
+    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=200)
     image = models.CharField(max_length=300, default="https://picsum.photos/700?random=10")
 
@@ -22,10 +22,11 @@ class Category(models.Model):
         return reverse('categories_detail', kwargs={'pk': self.pk})
 
 class Post(models.Model):
-
+    id = models.AutoField(primary_key=True)
     author = models.CharField(max_length=200)
     title = models.CharField(max_length=200)
     image = models.CharField(max_length=300, default="https://picsum.photos/700?random=10")
+    image_credits = models.CharField(max_length=200, blank=True, null=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     slug = models.CharField(max_length=200, blank=True, null=True)
     content = HTMLField()
@@ -54,7 +55,7 @@ class Message(models.Model):
     (Alert, 'Alert'),
     (Information, 'Information')
     ]
-
+    id = models.AutoField(primary_key=True)
     subject = models.CharField(max_length=100, blank=True)
     type = models.CharField(
     max_length=2,
