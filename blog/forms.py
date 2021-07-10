@@ -28,4 +28,4 @@ class MessageForm(forms.ModelForm):
 
     class Meta:
         model = Message
-        fields = ['subject', 'type', 'content']
+        fields = ['subject', 'type', 'content', 'visible']

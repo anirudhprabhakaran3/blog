@@ -18,7 +18,7 @@ def post_list(request):
         posts = paginator.page(1)
     except EmptyPage:
         posts = paginator.page(paginator.num_pages)
-    message = Message.objects.all().order_by('-id')
+    message = Message.objects.all().filter(visible=True).order_by('-id')
     heading = "Posts"
     args = {
     'posts':posts,
@@ -36,7 +36,7 @@ def search(request):
             Q(author__icontains=query) |
             Q(content__icontains=query)
             ).distinct()
-    message = Message.objects.all().order_by('-id')
+    message = Message.objects.all().filter(visible=True).order_by('-id')
     args = {
     'posts':posts,
     'messages':message
@@ -44,7 +44,7 @@ def search(request):
     return render(request, 'blog/search.html', args)
 
 def home(request):
-    message = Message.objects.all().order_by('-id')
+    message = Message.objects.all().filter(visible=True).order_by('-id')
     x = Post.objects.all()
     if x:
         firstpost = Post.objects.all().order_by('-id')[0]
@@ -61,7 +61,7 @@ def home(request):
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    message = Message.objects.all().order_by('-id')
+    message = Message.objects.all().filter(visible=True).order_by('-id')
     args = {
         'post' : post,
         'messages' : message,
@@ -74,7 +74,7 @@ def categories_detail(request, pk):
         posts = Post.objects.filter(category=pk)
     except Post.DoesNotExist:
         posts = None
-    message = Message.objects.all().order_by('-id')
+    message = Message.objects.all().filter(visible=True).order_by('-id')
     paginator = Paginator(posts, 4)
     page = request.GET.get('page')
     try:
@@ -91,7 +91,7 @@ def categories_detail(request, pk):
     return render(request, 'blog/categories_detail.html', args) 
 
 def about(request):
-    message = Message.objects.all().order_by('-id')
+    message = Message.objects.all().filter(visible=True).order_by('-id')
     args = {
      'messages' : message,
     }
@@ -99,7 +99,7 @@ def about(request):
 
 def categories(request):
     categories = Category.objects.all()
-    message = Message.objects.all().order_by('-id')
+    message = Message.objects.all().filter(visible=True).order_by('-id')
     args = {
         'categories' : categories,
         'messages' : message,
@@ -118,7 +118,7 @@ def post_new(request):
     else:
         form = PostForm()
 
-    message = Message.objects.all().order_by('-id')
+    message = Message.objects.all().filter(visible=True).order_by('-id')
     args = {
         'form' : form,
         'messages': message,
@@ -137,7 +137,7 @@ def post_edit(request, pk):
             return redirect('post_detail', pk=post.pk)
     else:
         form = PostForm(instance=post)
-    message = Message.objects.all().order_by('-id')
+    message = Message.objects.all().filter(visible=True).order_by('-id')
     args = {
         'form' : form,
         'messages': message,
@@ -146,7 +146,7 @@ def post_edit(request, pk):
 
 def test_slug(request, slug):
     post = get_object_or_404(Post, slug=slug)
-    message = Message.objects.all().order_by('-id')
+    message = Message.objects.all().filter(visible=True).order_by('-id')
     args = {
         'post': post,
         'message': message,
